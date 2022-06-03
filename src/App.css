@@ -1,0 +1,192 @@
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.generalHeader {
+  font-weight: 300;
+}
+
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.generalInfoContainer {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+body {
+  font-family: "Nunito", sans-serif;
+  background-color: rgb(167, 164, 164);
+}
+html,
+body,
+#app,
+#app > div {
+  height: 100%;
+}
+
+.resumeTemplate {
+  background-color: #ffffff;
+  margin-left: 6rem;
+  margin-right: 6rem;
+  border-radius: 5px;
+}
+
+button {
+  border: none;
+  height: 2rem;
+  width: 6rem;
+  border-radius: 5px;
+  background-color: rgb(167, 164, 164);
+}
+
+.generalButton {
+  margin-bottom: 1rem;
+}
+
+button:hover,
+.firstName:hover,
+.lastName:hover,
+.currentRole:hover,
+.contactContainer > *:hover {
+  cursor: pointer;
+}
+
+.submit {
+  margin: 1rem;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+}
+
+.experienceForm,
+.educationForm,
+.skillsForm {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.experienceFrom:first-child {
+  margin-left: 0;
+}
+
+.experienceForm > input,
+.educationForm > input,
+.skillsForm > input,
+.fromTo > input {
+  height: 2rem;
+  width: 30rem;
+  margin-top: 1rem;
+}
+.experienceForm > label,
+.educationForm > label,
+.skillsForm > label,
+.fromTo > label {
+  font-weight: 500;
+}
+.experienceForm,
+.educationForm,
+.skillsForm {
+  margin-top: 1.5rem;
+}
+
+.workExperience {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 5rem;
+  width: 60%;
+}
+.educationDisplay {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 60%;
+  margin-top: 1rem;
+}
+
+.roleAndDuties,
+.closeButton {
+  margin-top: 1rem;
+}
+
+.displayed {
+  visibility: visible;
+  list-style: none;
+  cursor: pointer;
+  margin-left: 2rem;
+}
+.notDisplayed {
+  visibility: hidden;
+}
+
+.skillsList {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 10%;
+}
+
+.linkedIn {
+  display: grid;
+  grid-template-columns: 0.3fr 1fr;
+  column-gap: 1rem;
+  width: 50%;
+}
+
+.emailWithIcon {
+  display: grid;
+  grid-template-columns: 0.3fr 1fr;
+  width: 45%;
+  column-gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.phoneWithIcon {
+  display: grid;
+  grid-template-columns: 0.3fr 1.5fr;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.submitAndCancelButtons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+
+.title {
+  text-align: center;
+  padding-top: 0.5rem;
+}
+.skillsList > li {
+  margin-bottom: 1rem;
+}
