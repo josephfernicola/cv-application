@@ -1,200 +1,161 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import { ImLinkedin } from "react-icons/im";
 import { AiOutlineMail } from "react-icons/ai";
 import { AiOutlinePhone } from "react-icons/ai";
 
-class ContactInfo extends Component {
-  constructor() {
-    super();
+const ContactInfo = () => {
+  const [addressOne, setAddressOne] = useState("Address 1");
+  const [addressTwo, setAddressTwo] = useState("Address 2");
+  const [phone, setPhone] = useState("Phone Number");
+  const [email, setEmail] = useState("Email");
+  const [linkedin, setLinkedin] = useState("Linkedin");
 
-    this.state = {
-      addressOne: "Address 1",
-      addressTwo: "Address 2",
-      phone: "Phone Number",
-      email: "Email",
-      linkedin: "Linkedin",
-    };
-  }
-
-  displayAddressOneInput = () => {
-    this.setState({
-      addressOne: (
-        <input
-          type="text"
-          placeholder="Address 1"
-          name="addressOne"
-          onKeyDown={this.handleAddressOneKeyDown}
-          onBlur={this.handleAddressOneBlur}
-        ></input>
-      ),
-    });
+  const displayAddressOneInput = () => {
+    setAddressOne(
+      <input
+        type="text"
+        placeholder="Address 1"
+        name="addressOne"
+        onKeyDown={handleAddressOneKeyDown}
+        onBlur={handleAddressOneBlur}
+      ></input>
+    );
   };
-
-  handleAddressOneBlur = (e) => {
+  const handleAddressOneBlur = (e) => {
     if (e.target.value) {
-      this.setState({
-        addressOne: e.target.value,
-      });
+      setAddressOne(e.target.value);
     }
   };
-
-  handleAddressOneKeyDown = (e) => {
+  const handleAddressOneKeyDown = (e) => {
     if (e.target.value) {
       if (e.key === "Enter") {
-        this.setState({
-          addressOne: e.target.value,
-        });
+        setAddressOne(e.target.value);
       }
     }
   };
 
-  displayAddressTwoInput = () => {
-    this.setState({
-      addressTwo: (
-        <input
-          type="text"
-          placeholder="Address 2"
-          name="addressTwo"
-          onKeyDown={this.handleAddressTwoKeyDown}
-          onBlur={this.handleAddressTwoBlur}
-        ></input>
-      ),
-    });
+  const displayAddressTwoInput = () => {
+    setAddressTwo(
+      <input
+        type="text"
+        placeholder="Address 2"
+        name="addressTwo"
+        onKeyDown={handleAddressTwoKeyDown}
+        onBlur={handleAddressTwoBlur}
+      ></input>
+    );
   };
 
-  handleAddressTwoBlur = (e) => {
+  const handleAddressTwoBlur = (e) => {
     if (e.target.value) {
-      this.setState({
-        addressTwo: e.target.value,
-      });
+      setAddressTwo(e.target.value);
     }
   };
 
-  handleAddressTwoKeyDown = (e) => {
+  const handleAddressTwoKeyDown = (e) => {
     if (e.target.value) {
       if (e.key === "Enter") {
-        this.setState({
-          addressTwo: e.target.value,
-        });
+        setAddressTwo(e.target.value);
       }
     }
   };
 
-  displayPhoneInput = () => {
-    this.setState({
-      phone: (
-        <input
-          type="text"
-          placeholder="Phone Number"
-          name="Phone"
-          onKeyDown={this.handlePhoneKeyDown}
-          onBlur={this.handlePhoneBlur}
-        ></input>
-      ),
-    });
+  const displayPhoneInput = () => {
+    setPhone(
+      <input
+        type="text"
+        placeholder="Phone Number"
+        name="Phone"
+        onKeyDown={handlePhoneKeyDown}
+        onBlur={handlePhoneBlur}
+      ></input>
+    );
   };
 
-  handlePhoneBlur = (e) => {
+  const handlePhoneBlur = (e) => {
     if (e.target.value) {
-      this.setState({
-        phone: e.target.value,
-      });
+      setPhone(e.target.value);
     }
   };
 
-  handlePhoneKeyDown = (e) => {
+  const handlePhoneKeyDown = (e) => {
     if (e.target.value) {
       if (e.key === "Enter") {
-        this.setState({
-          phone: e.target.value,
-        });
-      }
-    }
-  };
-  displayEmailInput = () => {
-    this.setState({
-      email: (
-        <input
-          type="email"
-          placeholder="Email"
-          name="mail"
-          onKeyDown={this.handleEmailKeyDown}
-          onBlur={this.handleEmailBlur}
-        ></input>
-      ),
-    });
-  };
-
-  handleEmailBlur = (e) => {
-    if (e.target.value) {
-      this.setState({
-        email: e.target.value,
-      });
-    }
-  };
-
-  handleEmailKeyDown = (e) => {
-    if (e.target.value) {
-      if (e.key === "Enter") {
-        this.setState({
-          email: e.target.value,
-        });
+        setPhone(e.target.value);
       }
     }
   };
 
-  displayLinkedinInput = () => {
-    this.setState({
-      linkedin: (
-        <input
-          type="text"
-          placeholder="Linkedin"
-          name="linkedin"
-          onKeyDown={this.handleLinkedinKeyDown}
-          onBlur={this.handleLinkedinBlur}
-        ></input>
-      ),
-    });
+  const displayEmailInput = () => {
+    setEmail(
+      <input
+        type="email"
+        placeholder="Email"
+        name="mail"
+        onKeyDown={handleEmailKeyDown}
+        onBlur={handleEmailBlur}
+      ></input>
+    );
   };
 
-  handleLinkedinBlur = (e) => {
+  const handleEmailBlur = (e) => {
     if (e.target.value) {
-      this.setState({
-        linkedin: e.target.value,
-      });
+      setEmail(e.target.value);
     }
   };
 
-  handleLinkedinKeyDown = (e) => {
+  const handleEmailKeyDown = (e) => {
+    if (e.target.value) {
+      if (e.key === "Enter") {
+        setEmail(e.target.value);
+      }
+    }
+  };
+
+  const displayLinkedinInput = () => {
+    setLinkedin(
+      <input
+        type="text"
+        placeholder="Linkedin"
+        name="linkedin"
+        onKeyDown={handleLinkedinKeyDown}
+        onBlur={handleLinkedinBlur}
+      ></input>
+    );
+  };
+
+  const handleLinkedinBlur = (e) => {
+    if (e.target.value) {
+      setLinkedin(e.target.value);
+    }
+  };
+
+  const handleLinkedinKeyDown = (e) => {
     if (e.key === "Enter") {
       if (e.target.value) {
-        this.setState({
-          linkedin: e.target.value,
-        });
+        setLinkedin(e.target.value);
       }
     }
   };
 
-  render() {
-    return (
-      <div className="contactContainer">
-        <h4 onClick={this.displayAddressOneInput}>{this.state.addressOne}</h4>
-        <h4 onClick={this.displayAddressTwoInput}>{this.state.addressTwo}</h4>
-        <div class="phoneWithIcon">
-          <AiOutlinePhone />
-          <div onClick={this.displayPhoneInput}>{this.state.phone}</div>
-        </div>
-        <div class="emailWithIcon">
-          <AiOutlineMail />
-          <div onClick={this.displayEmailInput}>{this.state.email}</div>
-        </div>
-        <div class="linkedIn">
-          <ImLinkedin />
-          <div onClick={this.displayLinkedinInput}>{this.state.linkedin}</div>
-        </div>
+  return (
+    <div className="contactContainer">
+      <h4 onClick={displayAddressOneInput}>{addressOne}</h4>
+      <h4 onClick={displayAddressTwoInput}>{addressTwo}</h4>
+      <div className="phoneWithIcon">
+        <AiOutlinePhone />
+        <div onClick={displayPhoneInput}>{phone}</div>
       </div>
-    );
-  }
-}
+      <div className="emailWithIcon">
+        <AiOutlineMail />
+        <div onClick={displayEmailInput}>{email}</div>
+      </div>
+      <div className="linkedIn">
+        <ImLinkedin />
+        <div onClick={displayLinkedinInput}>{linkedin}</div>
+      </div>
+    </div>
+  );
+};
 
 export default ContactInfo;

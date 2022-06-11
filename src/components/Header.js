@@ -1,141 +1,111 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import ContactInfo from "./ContactInfo.js";
 
-class Header extends Component {
-  constructor() {
-    super();
+const Header = () => {
+  const [firstName, setFirstName] = useState("First Name");
+  const [lastName, setLastName] = useState("Last Name");
+  const [currentRole, setCurrentRole] = useState("Current Role");
 
-    this.state = {
-      firstName: "First Name",
-      lastName: "Last Name",
-      currentRole: "Current Role",
-      input: true,
-    };
-  }
-
-  displayFirstNameInput = () => {
-    this.setState({
-      firstName: (
-        <input
-          type="text"
-          placeholder="First Name"
-          name="firstName"
-          onKeyDown={this.handleFirstNameKeyDown}
-          onBlur={this.handleFirstNameBlur}
-        ></input>
-      ),
-    });
+  const displayFirstNameInput = () => {
+    setFirstName(
+      <input
+        type="text"
+        placeholder="First Name"
+        name="firstName"
+        onKeyDown={handleFirstNameKeyDown}
+        onBlur={handleFirstNameBlur}
+      ></input>
+    );
   };
-  displayLastNameInput = () => {
-    this.setState({
-      lastName: (
-        <input
-          type="text"
-          placeholder="Last Name"
-          name="lastName"
-          onKeyDown={this.handleLastNameKeyDown}
-          onBlur={this.handleLastNameBlur}
-        ></input>
-      ),
-    });
+  const displayLastNameInput = () => {
+    setLastName(
+      <input
+        type="text"
+        placeholder="Last Name"
+        name="lastName"
+        onKeyDown={handleLastNameKeyDown}
+        onBlur={handleLastNameBlur}
+      ></input>
+    );
   };
 
-  handleFirstNameBlur = (e) => {
+  const handleFirstNameBlur = (e) => {
     if (e.target.value) {
-      this.setState({
-        firstName: e.target.value,
-      });
+      setFirstName(e.target.value);
     }
   };
 
-  handleLastNameKeyDown = (e) => {
+  const handleLastNameKeyDown = (e) => {
     if (e.target.value) {
       if (e.key === "Enter") {
-        this.setState({
-          lastName: e.target.value,
-        });
+        setLastName(e.target.value);
       }
     }
   };
-  handleLastNameBlur = (e) => {
+  const handleLastNameBlur = (e) => {
     if (e.target.value) {
-      this.setState({
-        lastName: e.target.value,
-      });
+      setLastName(e.target.value);
     }
   };
 
-  handleFirstNameKeyDown = (e) => {
+  const handleFirstNameKeyDown = (e) => {
     if (e.target.value) {
       if (e.key === "Enter") {
-        this.setState({
-          firstName: e.target.value,
-        });
+        setFirstName(e.target.value);
       }
     }
   };
-  displayCurrentRoleInput = (e) => {
-    this.setState({
-      currentRole: (
-        <input
-          type="text"
-          placeholder="Current Role"
-          name="currentRole"
-          onKeyDown={this.handleCurrentRoleKeyDown}
-          onBlur={this.handleCurrentRoleBlur}
-        ></input>
-      ),
-    });
+  const displayCurrentRoleInput = (e) => {
+    setCurrentRole(
+      <input
+        type="text"
+        placeholder="Current Role"
+        name="currentRole"
+        onKeyDown={handleCurrentRoleKeyDown}
+        onBlur={handleCurrentRoleBlur}
+      ></input>
+    );
   };
-  handleCurrentRoleBlur = (e) => {
+  const handleCurrentRoleBlur = (e) => {
     if (e.target.value) {
-      this.setState({
-        currentRole: e.target.value,
-      });
+      setCurrentRole(e.target.value);
     }
   };
 
-  handleCurrentRoleKeyDown = (e) => {
+  const handleCurrentRoleKeyDown = (e) => {
     if (e.target.value) {
       if (e.key === "Enter") {
-        this.setState({
-          currentRole: e.target.value,
-        });
+        setCurrentRole(e.target.value);
       }
     }
   };
 
-  render() {
-    return (
-      <div className="topPage">
-        <div className="headerContainer">
-          <div className="left">
-            <div className="firstNameContainer">
-              <h1 onClick={this.displayFirstNameInput} className="firstName">
-                {this.state.firstName}
-              </h1>
-            </div>
-            <div className="lastNameContainer">
-              <h1 onClick={this.displayLastNameInput} className="lastName">
-                {this.state.lastName}
-              </h1>
-            </div>
-            <div className="currentRoleContainer">
-              <span
-                onClick={this.displayCurrentRoleInput}
-                className="currentRole"
-              >
-                {this.state.currentRole}
-              </span>
-            </div>
+  return (
+    <div className="topPage">
+      <div className="headerContainer">
+        <div className="left">
+          <div className="firstNameContainer">
+            <h1 onClick={displayFirstNameInput} className="firstName">
+              {firstName}
+            </h1>
           </div>
-          <div className="right">
-            <ContactInfo />
+          <div className="lastNameContainer">
+            <h1 onClick={displayLastNameInput} className="lastName">
+              {lastName}
+            </h1>
+          </div>
+          <div className="currentRoleContainer">
+            <span onClick={displayCurrentRoleInput} className="currentRole">
+              {currentRole}
+            </span>
           </div>
         </div>
+        <div className="right">
+          <ContactInfo />
+        </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default Header;

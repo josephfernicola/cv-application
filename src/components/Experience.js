@@ -1,68 +1,54 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import DisplayExperience from "./DisplayExperience";
 import uniqid from "uniqid";
 
-class Experience extends Component {
-  constructor() {
-    super();
+const Experience = () => {
+  const [experienceForm, setExperienceForm] = useState("");
+  const [experienceArray, setExperienceArray] = useState([]);
 
-    this.state = {
-      title: "Work Experience",
-      button: "+ Experience",
-      experienceForm: "",
-      experienceList: "",
-      experienceArray: [],
-    };
-  }
-  handleExperienceForm = () => {
-    this.setState({
-      experienceForm: (
-        <form className="experienceForm" onSubmit={this.handleSubmit}>
-          <label htmlFor="company">Company: </label>
-          <input type="text" placeholder="Company Name" name="company"></input>
-          <br></br>
-          <label htmlFor="experienceCity">City: </label>
-          <input type="text" placeholder="City" name="experienceCity"></input>
-          <br></br>
-          <label htmlFor="experienceFrom">From: </label>
-          <input type="text" placeholder="From" name="experienceFrom"></input>
-          <br></br>
-          <label htmlFor="experienceTo">To: </label>
-          <input type="text" placeholder="To" name="experienceTo"></input>
-          <br></br>
-          <label htmlFor="role">Role: </label>
-          <input type="text" placeholder="Role" name="role"></input>
-          <br></br>
-          <label htmlFor="duties">Job Duties: </label>
-          <textarea
-            placeholder="Job Duties"
-            name="duties"
-            rows="8"
-            cols="70"
-          ></textarea>
-          <div className="submitAndCancelButtons">
-            <button className="submit" type="submit">
-              Submit
-            </button>
-            <button type="button" onClick={this.handleExperienceCancel}>
-              Cancel
-            </button>
-          </div>
-        </form>
-      ),
-    });
+  const handleExperienceForm = () => {
+    setExperienceForm(
+      <form className="experienceForm" onSubmit={handleSubmit}>
+        <label htmlFor="company">Company: </label>
+        <input type="text" placeholder="Company Name" name="company"></input>
+        <br></br>
+        <label htmlFor="experienceCity">City: </label>
+        <input type="text" placeholder="City" name="experienceCity"></input>
+        <br></br>
+        <label htmlFor="experienceFrom">From: </label>
+        <input type="text" placeholder="From" name="experienceFrom"></input>
+        <br></br>
+        <label htmlFor="experienceTo">To: </label>
+        <input type="text" placeholder="To" name="experienceTo"></input>
+        <br></br>
+        <label htmlFor="role">Role: </label>
+        <input type="text" placeholder="Role" name="role"></input>
+        <br></br>
+        <label htmlFor="duties">Job Duties: </label>
+        <textarea
+          placeholder="Job Duties"
+          name="duties"
+          rows="8"
+          cols="70"
+        ></textarea>
+        <div className="submitAndCancelButtons">
+          <button className="submit" type="submit">
+            Submit
+          </button>
+          <button type="button" onClick={handleExperienceCancel}>
+            Cancel
+          </button>
+        </div>
+      </form>
+    );
   };
-  handleExperienceCancel = () => {
-    this.setState({
-      experienceForm: "",
-    });
+  const handleExperienceCancel = () => {
+    setExperienceForm("");
   };
 
-  handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    this.setState({
-      experienceForm: "",
-    });
+    setExperienceForm("");
     const newArr = [
       {
         company: e.target.company.value,
@@ -74,23 +60,18 @@ class Experience extends Component {
         id: uniqid(),
       },
     ];
-    this.setState({
-      experienceArray: this.state.experienceArray.concat(newArr),
-    });
+    setExperienceArray(experienceArray.concat(newArr));
   };
-
-  render() {
-    return (
-      <div className="generalInfoContainer">
-        <h1 className="generalHeader">{this.state.title}</h1>
-        <button onClick={this.handleExperienceForm} className="generalButton">
-          {this.state.button}
-        </button>
-        <div>{this.state.experienceForm}</div>
-        <DisplayExperience experienceArray={this.state.experienceArray} />
-      </div>
-    );
-  }
-}
+  return (
+    <div className="generalInfoContainer">
+      <h1 className="generalHeader">Experience</h1>
+      <button onClick={handleExperienceForm} className="generalButton">
+        + Experience
+      </button>
+      <div>{experienceForm}</div>
+      <DisplayExperience experienceArray={experienceArray} />
+    </div>
+  );
+};
 
 export default Experience;
