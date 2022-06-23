@@ -37,9 +37,9 @@ const Skills = () => {
   };
 
   return (
-    <div className="generalInfoContainer">
-      <h1 className="generalHeader">Skills</h1>
-      <button onClick={handleSkillsForm} className="generalButton">
+    <div className="skillsContainer">
+      <h1 className="skillsHeader">Skills</h1>
+      <button onClick={handleSkillsForm} className="skillsButton">
         + Skills
       </button>
       <div>{skillsForm}</div>

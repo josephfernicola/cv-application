@@ -63,9 +63,9 @@ const Experience = () => {
     setExperienceArray(experienceArray.concat(newArr));
   };
   return (
-    <div className="generalInfoContainer">
-      <h1 className="generalHeader">Experience</h1>
-      <button onClick={handleExperienceForm} className="generalButton">
+    <div className="experienceContainer">
+      <h1 className="experienceHeader">Experience</h1>
+      <button onClick={handleExperienceForm} className="experienceButton">
         + Experience
       </button>
       <div>{experienceForm}</div>

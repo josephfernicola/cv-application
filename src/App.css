@@ -1,62 +1,43 @@
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.generalHeader {
+.educationHeader,
+.experienceHeader,
+.skillsHeader {
   font-weight: 300;
 }
 
 .headerContainer {
   display: flex;
   justify-content: space-between;
-  margin-left: 2rem;
-  margin-right: 2rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
 }
 
-.generalInfoContainer {
-  margin-left: 2rem;
-  margin-right: 2rem;
+.experienceContainer,
+.educationContainer,
+.skillsContainer {
+  margin-left: 3rem;
+  margin-right: 3rem;
 }
 
 .hidden {
   visibility: hidden;
 }
 
+.title {
+  background-color: rgb(167, 164, 164);
+  margin-top: 0;
+  margin-bottom: 0;
+  height: 6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 body {
   font-family: "Nunito", sans-serif;
-  background-color: rgb(167, 164, 164);
-}
-html,
-body,
-#app,
-#app > div {
-  height: 100%;
+  background-color: #ffffff;
 }
 
 .resumeTemplate {
   background-color: #ffffff;
-  margin-left: 6rem;
-  margin-right: 6rem;
   border-radius: 5px;
 }
 
@@ -68,8 +49,13 @@ button {
   background-color: rgb(167, 164, 164);
 }
 
-.generalButton {
+.skillsButton,
+.educationButton,
+.experienceButton {
   margin-bottom: 1rem;
+}
+.experienceHeader {
+  margin-top: 0;
 }
 
 button:hover,
@@ -185,7 +171,6 @@ textarea:focus {
 
 .title {
   text-align: center;
-  padding-top: 0.5rem;
 }
 .skillsList > li {
   margin-bottom: 1rem;

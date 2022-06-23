@@ -63,9 +63,9 @@ const Education = () => {
   };
 
   return (
-    <div className="generalInfoContainer">
-      <h1 className="generalHeader">Education</h1>
-      <button onClick={handleEducationForm} className="generalButton">
+    <div className="educationContainer">
+      <h1 className="educationHeader">Education</h1>
+      <button onClick={handleEducationForm} className="educationButton">
         + Education
       </button>
       <div>{educationForm}</div>
