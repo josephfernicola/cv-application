@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { ImLinkedin } from "react-icons/im";
 import { AiOutlineMail } from "react-icons/ai";
 import { AiOutlinePhone } from "react-icons/ai";
@@ -7,8 +7,11 @@ const ContactInfo = () => {
   const [addressOne, setAddressOne] = useState("Address 1");
   const [addressTwo, setAddressTwo] = useState("Address 2");
   const [phone, setPhone] = useState("Phone Number");
+  const [phoneError, setPhoneError] = useState("");
   const [email, setEmail] = useState("Email");
+  const [emailError, setEmailError] = useState("");
   const [linkedin, setLinkedin] = useState("Linkedin");
+  const [linkedinError, setLinkedinError] = useState("");
 
   const displayAddressOneInput = () => {
     setAddressOne(
@@ -73,18 +76,44 @@ const ContactInfo = () => {
   };
 
   const handlePhoneBlur = (e) => {
-    if (e.target.value) {
+    if (validatePhoneNumber(e.target.value)) {
       setPhone(e.target.value);
+      setPhoneError("");
     }
+  
+  if (!validatePhoneNumber(e.target.value)) {
+      setPhoneError("*Please enter valid phone number")
+  }
+
   };
 
   const handlePhoneKeyDown = (e) => {
-    if (e.target.value) {
       if (e.key === "Enter") {
+        if (validatePhoneNumber(e.target.value)) {
         setPhone(e.target.value);
+        setPhoneError("")
       }
+      if (!validatePhoneNumber(e.target.value)) {
+        setPhoneError("*Please enter valid phone number")
+    }
     }
   };
+
+  const validatePhoneNumber = (number) => {
+      return number.match(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im)
+  }
+
+  const validateEmail = (email) => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+  };
+
+  const validateOnlyLetters = (input) => {
+    return input.match(/[a-zA-Z]$/)
+  }
 
   const displayEmailInput = () => {
     setEmail(
@@ -99,19 +128,26 @@ const ContactInfo = () => {
   };
 
   const handleEmailBlur = (e) => {
-    if (e.target.value) {
+    if (validateEmail(e.target.value)) {
       setEmail(e.target.value);
+      setEmailError("");
+    }
+    if (!validateEmail(e.target.value)) {
+        setEmailError("Please enter valid email address")
     }
   };
 
   const handleEmailKeyDown = (e) => {
-    if (e.target.value) {
       if (e.key === "Enter") {
+        if (validateEmail(e.target.value)) {
         setEmail(e.target.value);
+        setEmailError("");
       }
+      else if (!validateEmail(e.target.value)) {
+        setEmailError("*Please enter valid email address");
+    }
     }
   };
-
   const displayLinkedinInput = () => {
     setLinkedin(
       <input
@@ -125,34 +161,43 @@ const ContactInfo = () => {
   };
 
   const handleLinkedinBlur = (e) => {
-    if (e.target.value) {
+    if (validateOnlyLetters(e.target.value)) {
       setLinkedin(e.target.value);
+      setLinkedinError("");
+    }
+    if (!validateOnlyLetters(e.target.value)) {
+        setLinkedinError("*No numbers or special characters allowed")
     }
   };
 
   const handleLinkedinKeyDown = (e) => {
     if (e.key === "Enter") {
-      if (e.target.value) {
-        setLinkedin(e.target.value);
-      }
+      if (validateOnlyLetters(e.target.value)) {
+      setLinkedin(e.target.value);
+      setLinkedinError("");
     }
-  };
+    else if (!validateOnlyLetters(e.target.value)) {
+      setLinkedinError("*No numbers or special characters allowed");
+  }
+}
+};
+
 
   return (
     <div className="contactContainer">
-      <h4 onClick={displayAddressOneInput}>{addressOne}</h4>
-      <h4 onClick={displayAddressTwoInput}>{addressTwo}</h4>
+      <h4 className="addressOne" onClick={displayAddressOneInput}>{addressOne}</h4>
+      <h4 className="addressTwo" onClick={displayAddressTwoInput}>{addressTwo}</h4>
       <div className="phoneWithIcon">
         <AiOutlinePhone />
-        <div onClick={displayPhoneInput}>{phone}</div>
+        <div onClick={displayPhoneInput}>{phone}<div className="phoneError">{phoneError}</div></div>
       </div>
       <div className="emailWithIcon">
         <AiOutlineMail />
-        <div onClick={displayEmailInput}>{email}</div>
+        <div onClick={displayEmailInput}>{email}<div className="emailError">{emailError}</div></div>
       </div>
       <div className="linkedIn">
         <ImLinkedin />
-        <div onClick={displayLinkedinInput}>{linkedin}</div>
+        <div onClick={displayLinkedinInput}>{linkedin}<div className="linkedinError">{linkedinError}</div></div>
       </div>
     </div>
   );

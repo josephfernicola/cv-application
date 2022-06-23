@@ -3,8 +3,11 @@ import ContactInfo from "./ContactInfo.js";
 
 const Header = () => {
   const [firstName, setFirstName] = useState("First Name");
+  const [firstNameError, setFirstNameError] = useState("");
   const [lastName, setLastName] = useState("Last Name");
+  const [lastNameError, setLastNameError] = useState("");
   const [currentRole, setCurrentRole] = useState("Current Role");
+  const [currentRoleError, setCurrentRoleError] = useState("");
 
   const displayFirstNameInput = () => {
     setFirstName(
@@ -30,29 +33,47 @@ const Header = () => {
   };
 
   const handleFirstNameBlur = (e) => {
-    if (e.target.value) {
+    if (validateOnlyLetters(e.target.value)) {
       setFirstName(e.target.value);
+      setFirstNameError("");
+    }
+    else if (!validateOnlyLetters(e.target.value)) {
+      setFirstNameError("*No numbers or special characters allowed");
     }
   };
 
   const handleLastNameKeyDown = (e) => {
-    if (e.target.value) {
       if (e.key === "Enter") {
+        if (validateOnlyLetters(e.target.value)) {
         setLastName(e.target.value);
+        setLastNameError("")
+      }
+      else if (!validateOnlyLetters(e.target.value)) {
+        setLastNameError("*No numbers or special characters allowed")
       }
     }
   };
   const handleLastNameBlur = (e) => {
-    if (e.target.value) {
+    if (validateOnlyLetters(e.target.value)) {
       setLastName(e.target.value);
+      setLastNameError("")
+    }
+    else if(!validateOnlyLetters(e.target.value)) {
+      setLastNameError("*No numbers or special characters allowed")
     }
   };
 
   const handleFirstNameKeyDown = (e) => {
-    if (e.target.value) {
+
       if (e.key === "Enter") {
+        if (validateOnlyLetters(e.target.value)) {
         setFirstName(e.target.value);
+        setFirstNameError("")
       }
+      else if(!validateOnlyLetters(e.target.value)) {
+        setFirstNameError("*No numbers or special characters allowed")
+      }
+
     }
   };
   const displayCurrentRoleInput = (e) => {
@@ -67,18 +88,30 @@ const Header = () => {
     );
   };
   const handleCurrentRoleBlur = (e) => {
-    if (e.target.value) {
+    if (validateOnlyLetters(e.target.value)) {
       setCurrentRole(e.target.value);
+      setCurrentRoleError("");
+    }
+    else if (!validateOnlyLetters(e.target.value)) {
+      setCurrentRoleError("*No numbers of special characters allowed")
     }
   };
 
   const handleCurrentRoleKeyDown = (e) => {
-    if (e.target.value) {
       if (e.key === "Enter") {
+        if (validateOnlyLetters(e.target.value)) {
         setCurrentRole(e.target.value);
+        setCurrentRoleError("")
+      }
+      else if (!validateOnlyLetters(e.target.value)) {
+        setCurrentRoleError("*No numbers of special characters allowed")
       }
     }
   };
+
+  const validateOnlyLetters = (input) => {
+    return input.match(/[a-zA-Z]$/)
+  }
 
   return (
     <div className="topPage">
@@ -86,18 +119,18 @@ const Header = () => {
         <div className="left">
           <div className="firstNameContainer">
             <h1 onClick={displayFirstNameInput} className="firstName">
-              {firstName}
+              {firstName}<div className="firstNameError">{firstNameError}</div>
             </h1>
           </div>
           <div className="lastNameContainer">
             <h1 onClick={displayLastNameInput} className="lastName">
-              {lastName}
+              {lastName}<div className="lastNameError">{lastNameError}</div>
             </h1>
           </div>
           <div className="currentRoleContainer">
-            <span onClick={displayCurrentRoleInput} className="currentRole">
-              {currentRole}
-            </span>
+            <div onClick={displayCurrentRoleInput} className="currentRole">
+              {currentRole}<div className="currentRoleError">{currentRoleError}</div>
+            </div>
           </div>
         </div>
         <div className="right">

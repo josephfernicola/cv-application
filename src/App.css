@@ -7,15 +7,20 @@
 .headerContainer {
   display: flex;
   justify-content: space-between;
-  margin-left: 3rem;
-  margin-right: 3rem;
+  margin-left: 6rem;
+  margin-right: 7rem;
 }
 
 .experienceContainer,
 .educationContainer,
 .skillsContainer {
-  margin-left: 3rem;
+  margin-left: 6rem;
   margin-right: 3rem;
+}
+
+.resumeTemplate {
+  display: grid;
+  grid-template-rows: repeat(auto-fit, minmax(235px, 1fr));
 }
 
 .hidden {
@@ -64,6 +69,12 @@ button:hover,
 .currentRole:hover,
 .contactContainer > *:hover {
   cursor: pointer;
+}
+
+.contactContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .submit {
@@ -141,25 +152,16 @@ textarea:focus {
   width: 10%;
 }
 
-.linkedIn {
-  display: grid;
-  grid-template-columns: 0.3fr 1fr;
-  column-gap: 1rem;
-  width: 50%;
-}
 
-.emailWithIcon {
-  display: grid;
-  grid-template-columns: 0.3fr 1fr;
-  width: 45%;
-  column-gap: 1rem;
+.emailWithIcon, .phoneWithIcon, .linkedIn {
+  display: flex;
+  column-gap: .5rem;
   margin-bottom: 1rem;
 }
 
+
 .phoneWithIcon {
-  display: grid;
-  grid-template-columns: 0.3fr 1.5fr;
-  width: 100%;
+
   margin-bottom: 1rem;
 }
 
@@ -174,4 +176,19 @@ textarea:focus {
 }
 .skillsList > li {
   margin-bottom: 1rem;
+}
+
+
+h4 {
+  margin: 0;
+  margin-bottom: 1rem;;
+}
+
+.addressOne {
+  margin-top: 1.5rem;
+}
+
+.emailError, .phoneError, .linkedinError, .currentRoleError, .firstNameError, .lastNameError {
+  font-size: .7rem;
+  color: red;
 }
