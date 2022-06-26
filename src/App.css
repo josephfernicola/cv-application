@@ -192,3 +192,37 @@ h4 {
   font-size: .7rem;
   color: red;
 }
+
+@media (max-width: 900px) {
+  .headerContainer {
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+  }
+
+  .experienceContainer, .educationContainer, .skillsContainer {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+  button {
+    color: black;
+  }
+  .firstName, .lastName {
+    font-size: 1.5rem;
+  }
+
+  .experienceHeader, .educationHeader, .skillsHeader {
+    font-size: 1.5rem;
+  }
+  .experienceButton, .educationButton, .skillsButton {
+    height: 1.5rem;
+    width: 5.5rem;
+    font-size: 0.7rem;
+  }
+  .experienceForm > input, .educationForm > input, .skillsForm > input, .fromTo > input {
+    width: 20rem;
+  }
+
+  textarea {
+    width: 22rem;
+  }
+}
